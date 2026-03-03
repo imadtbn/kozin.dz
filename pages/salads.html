@@ -199,6 +199,40 @@
 
     <script src="../javascript/js-main.js"></script>
 
+    <!-- في نهاية salads.html -->
+<script src="../javascript/cardRenderer.js"></script>
+
+<script>
+    fetch('recipes.json')
+        .then(response => response.json())
+        .then(data => {
+            const recipes = data.recipes;
+            const container = document.querySelector('#salads-grid');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+
+            function displayRecipes(categoryFilter = 'all') {
+                let filtered = recipes.filter(r => r.category.includes('salad'));
+                if (categoryFilter !== 'all') {
+                    filtered = filtered.filter(r => r.category === categoryFilter);
+                }
+                container.innerHTML = filtered.map(renderCard).join('');
+            }
+
+            // العرض الأولي
+            displayRecipes('all');
+
+            // إضافة مستمعي الأحداث لأزرار التصفية
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const filter = btn.dataset.filter;
+                    displayRecipes(filter);
+                });
+            });
+        });
+</script>
+
     <script>
         // فلترة البطاقات
         const filterButtons = document.querySelectorAll('.filter-btn');
