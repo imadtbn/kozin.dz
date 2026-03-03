@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مطبخ الجزائر - الحميات الغذائية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/diet.css">
+    <link rel="stylesheet" href="../style/style-main.css">
+
+</head>
+<body>
+    <!-- هيدر فرعي -->
+    <header class="sub-header">
+        <nav class="navbar">
+            <div class="logo">
+                <h1>🍽️ مطبخ الجزائر</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="cuisine-dz.html" >طبخ جزائري</a></li>
+                <li><a href="salads.html">السلطات</a></li>
+                <li><a href="diet.html"class="active">حميات غذائية</a></li>
+                <li><a href="traditional-desserts.html" >حلويات تقليدية</a></li>
+                <li><a href="modern-desserts.html">حلويات عصرية</a></li>
+                <li><a href="about.html" >من نحن</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+            </ul>
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+        <div class="page-title">
+            <h2>الحميات الغذائية</h2>
+            <p>وصفات مخصصة للتنحيف والتسمين بإشراف أخصائيين</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- أزرار التصفية (اختياري) -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">الكل</button>
+            <button class="filter-btn" data-filter="loss">التنحيف</button>
+            <button class="filter-btn" data-filter="gain">التسمين</button>
+        </div>
+
+        <!-- شبكة بطاقات الحميات -->
+        <section class="section">
+            <div class="cards-grid" id="diet-cards">
+                <!-- بطاقة تنحيف 1 -->
+                <div class="card" data-category="loss">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/300x200" alt="سلطة الكينوا">
+                        <span class="card-badge diet-loss">تنحيف</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>سلطة الكينوا بالخضار</h3>
+                        <p class="ingredients">مقادير: كينوا، خيار، طماطم، فلفل ألوان، ليمون، زيت زيتون...</p>
+                        <div class="card-footer">
+                            <span class="date"><i class="far fa-calendar-alt"></i> 2024-03-20</span>
+                            <span class="author">نشر: أخصائية تغذية</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- بطاقة تنحيف 2 -->
+                <div class="card" data-category="loss">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/300x200" alt="شوربة عدس">
+                        <span class="card-badge diet-loss">تنحيف</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>شوربة عدس بالخضار</h3>
+                        <p class="ingredients">مقادير: عدس، جزر، كرفس، بصل، ثوم، كمون...</p>
+                        <div class="card-footer">
+                            <span class="date"><i class="far fa-calendar-alt"></i> 2024-03-18</span>
+                            <span class="author">نشر: أمل</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- بطاقة تنحيف 3 -->
+                <div class="card" data-category="loss">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/300x200" alt="صدر دجاج مشوي">
+                        <span class="card-badge diet-loss">تنحيف</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>صدر دجاج مشوي بالخضار</h3>
+                        <p class="ingredients">مقادير: صدر دجاج، بروكلي، جزر، بهارات، زيت زيتون...</p>
+                        <div class="card-footer">
+                            <span class="date"><i class="far fa-calendar-alt"></i> 2024-03-15</span>
+                            <span class="author">نشر: كريم</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- بطاقة تسمين 1 -->
+                <div class="card" data-category="gain">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/300x200" alt="مخبوز باللحم">
+                        <span class="card-badge diet-gain">تسمين</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>مخبوز باللحم والجبن</h3>
+                        <p class="ingredients">مقادير: لحم مفروم، جبن مبشور، عجينة، كريمة، بيض...</p>
+                        <div class="card-footer">
+                            <span class="date"><i class="far fa-calendar-alt"></i> 2024-03-17</span>
+                            <span class="author">نشر: محمد</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- بطاقة تسمين 2 -->
+                <div class="card" data-category="gain">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/300x200" alt="بطاطا مهروسة">
+                        <span class="card-badge diet-gain">تسمين</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>بطاطا مهروسة بالزبدة والكريمة</h3>
+                        <p class="ingredients">مقادير: بطاطس، زبدة، كريمة طبخ، جبن، ملح...</p>
+                        <div class="card-footer">
+                            <span class="date"><i class="far fa-calendar-alt"></i> 2024-03-12</span>
+                            <span class="author">نشر: سلمى</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- بطاقة تسمين 3 -->
+                <div class="card" data-category="gain">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/300x200" alt="كوكتيل زيادة الوزن">
+                        <span class="card-badge diet-gain">تسمين</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>كوكتيل التمر والمكسرات</h3>
+                        <p class="ingredients">مقادير: تمر، حليب كامل الدسم، موز، زبدة فول سوداني، عسل...</p>
+                        <div class="card-footer">
+                            <span class="date"><i class="far fa-calendar-alt"></i> 2024-03-10</span>
+                            <span class="author">نشر: أخصائي تغذية</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- المزيد من البطاقات يمكن إضافتها -->
+            </div>
+        </section>
+    </main>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>مطبخ الجزائر</h3>
+                <p>موقع يقدم أشهى الوصفات الجزائرية التقليدية والعصرية، مع خيارات صحية تلائم جميع الأنظمة الغذائية.</p>
+            </div>
+            <div class="footer-col">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                    <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>تواصل معنا</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2024 مطبخ الجزائر. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // فلترة البطاقات حسب الفئة (تنحيف / تسمين)
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // إزالة الكلاس النشط من جميع الأزرار
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filterValue = button.dataset.filter;
+
+                cards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        if (card.dataset.category === filterValue) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

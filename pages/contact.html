@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مطبخ الجزائر - اتصل بنا</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style/contact.css">
+    <link rel="stylesheet" href="../style/style-main.css">
+
 </head>
+
 <body>
     <!-- هيدر فرعي -->
     <header class="sub-header">
@@ -16,11 +20,12 @@
                 <h1>🍽️ مطبخ الجزائر</h1>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="category.html?cat=algerian">طبخ جزائري</a></li>
-                <li><a href="category.html?cat=modern">عصري</a></li>
-                <li><a href="category.html?cat=diet">حميات</a></li>
-                <li><a href="category.html?cat=desserts">حلويات</a></li>
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="cuisine-dz.html">طبخ جزائري</a></li>
+                <li><a href="salads.html">السلطات</a></li>
+                <li><a href="diet.html">حميات غذائية</a></li>
+                <li><a href="traditional-desserts.html">حلويات تقليدية</a></li>
+                <li><a href="modern-desserts.html">حلويات عصرية</a></li>
                 <li><a href="about.html">من نحن</a></li>
                 <li><a href="contact.html" class="active">اتصل بنا</a></li>
             </ul>
@@ -93,7 +98,9 @@
         <!-- الخريطة (اختياري) -->
         <section class="map-section">
             <div class="container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102396.699977104!2d3.041319!3d36.752887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128e4f7e8b5b3b7b%3A0x8b0b3b5b5b5b5b5b!2sAlgiers%2C%20Algeria!5e0!3m2!1sen!2sdz!4v1620000000000!5m2!1sen!2sdz" allowfullscreen="" loading="lazy"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102396.699977104!2d3.041319!3d36.752887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128e4f7e8b5b3b7b%3A0x8b0b3b5b5b5b5b5b!2sAlgiers%2C%20Algeria!5e0!3m2!1sen!2sdz!4v1620000000000!5m2!1sen!2sdz"
+                    allowfullscreen="" loading="lazy"></iframe>
             </div>
         </section>
     </main>
@@ -108,7 +115,7 @@
             <div class="footer-col">
                 <h3>روابط سريعة</h3>
                 <ul>
-                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="../index.html">الرئيسية</a></li>
                     <li><a href="about.html">من نحن</a></li>
                     <li><a href="contact.html" class="active">اتصل بنا</a></li>
                     <li><a href="privacy.html">سياسة الخصوصية</a></li>
@@ -129,14 +136,15 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../javascript/js-main.js"></script>
     <script>
         // معالجة إرسال النموذج (منع الإرسال الافتراضي وعرض رسالة)
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
             alert('شكراً لتواصلك معنا! سنرد عليك في أقرب وقت.');
             this.reset(); // إعادة تعيين الحقول
         });
     </script>
 </body>
+
 </html>
