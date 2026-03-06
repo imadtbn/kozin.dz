@@ -10,6 +10,7 @@
     <!-- الخطوط والأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style/style-main.css">
 
 </head>
@@ -49,18 +50,29 @@
             <input type="text" id="search-input" placeholder="ابحث عن وصفة..." aria-label="بحث">
             <i class="fas fa-search"></i>
         </div>
-        <a href="pages/submit-recipe.html" class="btn-submit">➕ نشر جديد</a>
+        <a href="https://forms.gle/your-google-form-id" target="_blank" class="btn-submit">
+            <i class="fas fa-utensils"></i> نشر وصفة
+        </a>
     </div>
 
     <script>
         // وظيفة البحث المباشر
+        // وظيفة البحث المباشر (موسع ليشمل العنوان، المكونات، الناشر، الشارة)
         document.getElementById('search-input').addEventListener('input', function (e) {
             const query = e.target.value.trim().toLowerCase();
             const cards = document.querySelectorAll('.card');
+
             cards.forEach(card => {
+                // استخراج النصوص من العناصر المختلفة
                 const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
                 const ingredients = card.querySelector('.ingredients')?.textContent.toLowerCase() || '';
-                if (title.includes(query) || ingredients.includes(query)) {
+                const author = card.querySelector('.author')?.textContent.toLowerCase() || '';
+                const badge = card.querySelector('.card-badge')?.textContent.toLowerCase() || '';
+
+                // دمج جميع النصوص للبحث
+                const allText = `${title} ${ingredients} ${author} ${badge}`;
+
+                if (allText.includes(query)) {
                     card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
