@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+
     <link rel="stylesheet" href="../style/style-main.css">
     <link rel="stylesheet" href="../style/salads.css">
     <link rel="stylesheet" href="../style/diet.css">
@@ -42,11 +44,36 @@
     </header>
 
     <main>
-        <!-- محرك البحث -->
-        <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="recipeSearch" placeholder="ابحث عن وصفة، مكون، أو اسم الناشر...">
-        </div>
+        <div class="recipe-search">
+
+            <div class="search-bar">
+              <input 
+                type="text"
+                id="searchInput"
+                placeholder="ابحث عن وصفة، مكون، أو اسم الناشر..."
+                autocomplete="off"
+              >
+              <div id="suggestions"></div>
+            </div>
+          
+            <div class="search-filters">
+          
+              <select id="categoryFilter">
+                <option value="">كل الأنواع</option>
+                <option value="traditional">تقليدي</option>
+                <option value="modern">عصري</option>
+                <option value="diet">دايت</option>
+              </select>
+          
+              <input 
+                type="text"
+                id="ingredientFilter"
+                placeholder="مكون مثل: طماطم"
+              >
+          
+            </div>
+          
+          </div>
 
         <!-- أزرار التصنيف (اختياري) -->
         <div class="filter-buttons">
@@ -130,4 +157,5 @@
         });
     </script>
 </body>
+
 </html>
