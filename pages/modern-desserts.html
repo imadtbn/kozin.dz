@@ -38,104 +38,117 @@
     <main>
         <!-- شبكة بطاقات الحلويات العصرية -->
         <section class="section">
-            <div class="cards-grid">
-                <!-- بطاقة 1 -->
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://via.placeholder.com/300x200" alt="تشيز كيك الجزائر">
-                        <span class="card-badge">عصرية</span>
-                    </div>
-                    <div class="card-content">
-                        <h3>تشيز كيك الجزائر</h3>
-                        <p class="ingredients">مقادير: جبن كريمي، تمر، بسكويت، قشطة، فستق حلبي...</p>
-                        <div class="card-footer">
-                            <span class="date"><i class="far fa-calendar-alt"></i> 2024-03-20</span>
-                            <span class="author">نشر: مريم</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="cards-grid" id="modern-desserts-cards"></div>
 
-                <!-- بطاقة 2 -->
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://via.placeholder.com/300x200" alt="مكرون باللوز">
-                        <span class="card-badge">عصرية</span>
-                    </div>
-                    <div class="card-content">
-                        <h3>مكرون باللوز والزعفران</h3>
-                        <p class="ingredients">مقادير: لوز مطحون، سكر، بياض بيض، زعفران، شوكولاتة بيضاء...</p>
-                        <div class="card-footer">
-                            <span class="date"><i class="far fa-calendar-alt"></i> 2024-03-18</span>
-                            <span class="author">نشر: سارة</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- بطاقة 3 -->
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://via.placeholder.com/300x200" alt="كيكة الريد فيلفت">
-                        <span class="card-badge">عصرية</span>
-                    </div>
-                    <div class="card-content">
-                        <h3>كيكة الريد فيلفت الجزائرية</h3>
-                        <p class="ingredients">مقادير: كاكاو، لبن، زبدة، صبغة حمراء، جبن كريمي...</p>
-                        <div class="card-footer">
-                            <span class="date"><i class="far fa-calendar-alt"></i> 2024-03-15</span>
-                            <span class="author">نشر: ليلى</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- بطاقة 4 -->
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://via.placeholder.com/300x200" alt="موس الشوكولاتة">
-                        <span class="card-badge">عصرية</span>
-                    </div>
-                    <div class="card-content">
-                        <h3>موس الشوكولاتة بالبرتقال</h3>
-                        <p class="ingredients">مقادير: شوكولاتة سوداء، بيض، سكر، قشر برتقال، كريمة...</p>
-                        <div class="card-footer">
-                            <span class="date"><i class="far fa-calendar-alt"></i> 2024-03-12</span>
-                            <span class="author">نشر: أسماء</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- بطاقة 5 -->
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://via.placeholder.com/300x200" alt="كريم كراميل">
-                        <span class="card-badge">عصرية</span>
-                    </div>
-                    <div class="card-content">
-                        <h3>كريم كراميل بنكهة القهوة</h3>
-                        <p class="ingredients">مقادير: حليب، بيض، سكر، قهوة سريعة الذوبان...</p>
-                        <div class="card-footer">
-                            <span class="date"><i class="far fa-calendar-alt"></i> 2024-03-10</span>
-                            <span class="author">نشر: نور</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- بطاقة 6 -->
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://via.placeholder.com/300x200" alt="تارت الفواكه">
-                        <span class="card-badge">عصرية</span>
-                    </div>
-                    <div class="card-content">
-                        <h3>تارت الفواكه الاستوائية</h3>
-                        <p class="ingredients">مقادير: عجينة سكر، كريمة باتسيير، مانجو، فراولة، كيوي...</p>
-                        <div class="card-footer">
-                            <span class="date"><i class="far fa-calendar-alt"></i> 2024-03-08</span>
-                            <span class="author">نشر: رانيا</span>
-                        </div>
+            <!-- النافذة المنبثقة (Modal) -->
+            <div id="recipeModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <div class="modal-body">
+                        <!-- يتم تعبئة المحتوى ديناميكياً عبر JavaScript -->
                     </div>
                 </div>
             </div>
-        </section>
+
+            <script>
+                // تحميل بيانات JSON وعرض البطاقات
+                let recipesData = [];
+
+                async function loadRecipes() {
+                    try {
+                        const response = await fetch('../data/modern-desserts.json'); // تأكد من المسار الصحيح
+                        recipesData = await response.json();
+                        renderCards('all');
+                    } catch (error) {
+                        console.error('خطأ في تحميل البيانات:', error);
+                        // يمكن عرض رسالة للمستخدم
+                    }
+                }
+
+                function renderCards(filter) {
+                    const container = document.getElementById('modern-desserts-cards');
+                    container.innerHTML = ''; // تفريغ الحاوية
+
+                    const filtered = filter === 'all' ? recipesData : recipesData.filter(r => r.category === filter);
+
+                    filtered.forEach(recipe => {
+                        const card = document.createElement('div');
+                        card.className = 'card';
+                        card.dataset.id = recipe.id;
+                        card.dataset.category = recipe.category;
+
+                        card.innerHTML = `
+                <div class="card-image">
+                    <img src="${recipe.image}" alt="${recipe.title}">
+                    <span class="card-badge modern-desserts-${recipe.category}">${recipe.badge}</span>
+                </div>
+                <div class="card-content">
+                    <h3>${recipe.title}</h3>
+                    <p class="ingredients">مقادير: ${recipe.ingredients.join('، ')}</p>
+                    <div class="card-footer">
+                        <span class="date"><i class="far fa-calendar-alt"></i> ${recipe.date}</span>
+                        <span class="author">نشر: ${recipe.author}</span>
+                    </div>
+                </div>
+            `;
+
+                        // إضافة حدث النقر لفتح النافذة المنبثقة
+                        card.addEventListener('click', () => showModal(recipe));
+                        container.appendChild(card);
+                    });
+                }
+
+                function showModal(recipe) {
+                    const modal = document.getElementById('recipeModal');
+                    const modalBody = modal.querySelector('.modal-body');
+                    const videoHtml = recipe.video ? `
+            <div class="video-container">
+                <iframe width="100%" height="280" src="${recipe.video}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        ` : '';
+
+                    modalBody.innerHTML = `
+            <h2>${recipe.title}</h2>
+            <img src="${recipe.image}" alt="${recipe.title}" style="max-width:100%; border-radius:8px;">
+            <p><strong>الوصف:</strong> ${recipe.description}</p>
+            <p><strong>المقادير:</strong> ${recipe.ingredients}</p>
+            <p><strong>طريقة التحضير:</strong> ${recipe.method}</p>
+
+            ${videoHtml}
+            <div class="author-info">
+                <p><strong>نشر:</strong> ${recipe.author}</p>
+                <p><strong>تاريخ النشر:</strong> ${recipe.date}</p>
+                <p><strong>رابط التواصل:</strong> <a href="${recipe.authorLink}" target="_blank">${recipe.authorLink}</a></p>
+            </div>
+        `;
+
+                    modal.style.display = 'block';
+                }
+
+                // إغلاق النافذة المنبثقة
+                document.querySelector('.close-modal').addEventListener('click', () => {
+                    document.getElementById('recipeModal').style.display = 'none';
+                });
+
+                window.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('modal')) {
+                        e.target.style.display = 'none';
+                    }
+                });
+
+                // أزرار التصفية
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        renderCards(btn.dataset.filter);
+                    });
+                });
+
+                // بدء التحميل
+                loadRecipes();
+            </script>
     </main>
 
     <!-- الفوتر (نفس التصميم) -->
