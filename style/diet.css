@@ -36,7 +36,7 @@
     background-color: #c0392b;
 }
 
-    .card-badge.diet-sportive {
+.card-badge.diet-sportive {
     background-color: #1461f0;
 }
 
@@ -139,3 +139,27 @@
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
+
+
+/* تحسين عرض المقادير وطريقة التحضير داخل modal */
+.ingredients-list {
+    list-style-type: circle;
+    padding-right: 20px;
+    margin-bottom: 15px;
+    columns: 2; /* عرض القائمة على عمودين لتوفير المسافة */
+    column-gap: 30px;
+}
+
+.ingredients-list li {
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+.method-text {
+    line-height: 1.7;
+    background-color: #f9f9f9;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    white-space: pre-line; /* يحافظ على فواصل الأسطر */
+}
