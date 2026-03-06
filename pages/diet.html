@@ -63,12 +63,23 @@
 </div>
 
 <script>
-        // ------------------ دالة عرض البطاقات ------------------
-        function renderCards(filter) {
+    // تحميل بيانات JSON وعرض البطاقات
+    let recipesData = [];
+
+    async function loadRecipes() {
+        try {
+            const response = await fetch('../data/diet.json'); // تأكد من المسار الصحيح
+            recipesData = await response.json();
+            renderCards('all');
+        } catch (error) {
+            console.error('خطأ في تحميل البيانات:', error);
+            // يمكن عرض رسالة للمستخدم
+        }
+    }
+
+    function renderCards(filter) {
         const container = document.getElementById('diet-cards');
-        const modal = document.getElementById('recipeModal');
-        container.innerHTML = ''; 
-        container.appendChild(modal); 
+        container.innerHTML = ''; // تفريغ الحاوية
 
         const filtered = filter === 'all' ? recipesData : recipesData.filter(r => r.category === filter);
 
@@ -93,37 +104,28 @@
                 </div>
             `;
 
+            // إضافة حدث النقر لفتح النافذة المنبثقة
             card.addEventListener('click', () => showModal(recipe));
             container.appendChild(card);
         });
     }
 
-    // ------------------ دالة عرض النافذة المنبثقة (مع method) ------------------
     function showModal(recipe) {
         const modal = document.getElementById('recipeModal');
         const modalBody = modal.querySelector('.modal-body');
         const videoHtml = recipe.video ? `
             <div class="video-container">
-                <iframe width="100%" height="315" src="${recipe.video}" frameborder="0" allowfullscreen></iframe>
+                <iframe width="100%" height="280" src="${recipe.video}" frameborder="0" allowfullscreen></iframe>
             </div>
         ` : '';
 
         modalBody.innerHTML = `
             <h2>${recipe.title}</h2>
             <img src="${recipe.image}" alt="${recipe.title}" style="max-width:100%; border-radius:8px;">
-            
             <p><strong>الوصف:</strong> ${recipe.description}</p>
-            
             <p><strong>المقادير:</strong></p>
-            <ul class="ingredients-list">
-                ${recipe.ingredients.map(ing => `<li>${ing}</li>`).join('')}
-            </ul>
-            
-            <p><strong>طريقة التحضير:</strong></p>
-            <p class="method-text">${recipe.method}</p>
-            
+            <ul>${recipe.ingredients.map(ing => `<li>${ing}</li>`).join('')}</ul>
             ${videoHtml}
-            
             <div class="author-info">
                 <p><strong>نشر:</strong> ${recipe.author}</p>
                 <p><strong>تاريخ النشر:</strong> ${recipe.date}</p>
@@ -134,7 +136,7 @@
         modal.style.display = 'block';
     }
 
-    // ------------------ إغلاق النافذة المنبثقة ------------------
+    // إغلاق النافذة المنبثقة
     document.querySelector('.close-modal').addEventListener('click', () => {
         document.getElementById('recipeModal').style.display = 'none';
     });
@@ -145,7 +147,7 @@
         }
     });
 
-    // ------------------ أزرار التصفية ------------------
+    // أزرار التصفية
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -154,9 +156,10 @@
         });
     });
 
-    // ------------------ بدء التحميل ------------------
-    renderCards('all');
+    // بدء التحميل
+    loadRecipes();
 </script>
+
 
 
 
@@ -195,6 +198,7 @@
     </footer>
 
     <script src="../javascript/js-main.js"></script>
+    <script src="../data/diet.json"></script>
 
 
 
@@ -229,4 +233,3 @@
 </body>
 
 </html>
-
