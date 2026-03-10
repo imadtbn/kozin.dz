@@ -62,7 +62,10 @@ ${videoHtml}
 `;
 
     modal.style.display = 'block';
+
+    injectRecipeSchema(recipe);
 }
+
 // إغلاق النافذة المنبثقة
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('recipeModal');
@@ -172,3 +175,41 @@ window.addEventListener("beforeinstallprompt", (e) => {
     });
 });
 
+
+//دالة توليد Schema للوصفة
+function injectRecipeSchema(recipe) {
+    // إزالة أي schema سابق
+    const oldSchema = document.getElementById("recipe-schema");
+    if (oldSchema) oldSchema.remove();
+
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "Recipe",
+        "name": recipe.title,
+        "image": recipe.image,
+        "author": {
+            "@type": "Person",
+            "name": recipe.author
+        },
+        "datePublished": recipe.date,
+        "description": recipe.description,
+        "recipeCategory": recipe.category || "",
+        "recipeIngredient": Array.isArray(recipe.ingredients)
+            ? recipe.ingredients
+            : recipe.ingredients.split("،"),
+        "recipeInstructions": recipe.method
+            .split(/\d+\./)
+            .filter(step => step.trim() !== "")
+            .map(step => ({
+                "@type": "HowToStep",
+                "text": step.trim()
+            }))
+    };
+
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = "recipe-schema";
+    script.textContent = JSON.stringify(schema, null, 2);
+
+    document.head.appendChild(script);
+}
