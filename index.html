@@ -48,18 +48,20 @@
     <!-- AMP Analytics -->
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PJ31N78DQC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJ31N78DQC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-PJ31N78DQC');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8310657804532081"
-     crossorigin="anonymous"></script>
+        gtag('config', 'G-PJ31N78DQC');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8310657804532081" crossorigin="anonymous"></script>
 
     <!-- الخطوط والأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -242,12 +244,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         window.addEventListener("load", () => {
             setTimeout(() => {
                 document.getElementById("splash-screen").style.display = "none";
-            }, 1600);
+            }, 900);
         });
     </script>
 
     <script src="javascript/js-main.js"></script>
 
+
 </body>
+
+</html>
 
 </html>
