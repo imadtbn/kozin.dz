@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="../style/style-main.css">
     <link rel="stylesheet" href="../style/commun-recipes-pages.css">
 
+
 </head>
 
 <body>
@@ -145,17 +146,35 @@
 
     <script src="../javascript/algerien.js"></script>
     <script src="../javascript/commun.js"></script>
-    <script src="../javascript/commun-recipes-pages.js"></script>
 
 
+    <script>
+        let visibleRecipes = 4;
 
-</body>
+        function renderRecipes(recipes) {
 
-</html>
+            const container = document.getElementById("algerien-cards");
+            container.innerHTML = "";
 
-</body>
+            recipes.slice(0, visibleRecipes).forEach(recipe => {
+                container.innerHTML += createRecipeCard(recipe);
+            });
 
-</html>
+            if (visibleRecipes >= recipes.length) {
+                document.getElementById("loadMoreBtn").style.display = "none";
+            }
+
+        }
+
+        document.getElementById("loadMoreBtn").addEventListener("click", function () {
+
+            visibleRecipes += 4;
+
+            renderRecipes(allRecipes);
+
+        });
+    </script>
+
 
 </body>
 
