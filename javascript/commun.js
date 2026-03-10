@@ -4,7 +4,7 @@ document.getElementById('search-input').addEventListener('input', function(e) {
     const cards = document.querySelectorAll('.card');
 
     cards.forEach(card => {
-        const title = card.querySelector('h3') ? .textContent.toLowerCase() || '';
+        const title = card.querySelector('h3')? .textContent.toLowerCase() || '';
         const ingredients = card.querySelector('.ingredients') ? .textContent.toLowerCase() || '';
         const author = card.querySelector('.author') ? .textContent.toLowerCase() || '';
         const badge = card.querySelector('.card-badge') ? .textContent.toLowerCase() || '';
@@ -64,4 +64,5 @@ if (filterButtons.length > 0) {
             });
         });
     });
+
 }
