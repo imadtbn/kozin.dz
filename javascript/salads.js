@@ -92,5 +92,26 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     });
 });
 
+
+// تحميل وصفات الطبخ الجزائري فقط
+async function loadSaladsRecipes() {
+    try {
+        const response = await fetch('../data/salads.json');
+        let recipes = await response.json();
+
+        // ترتيب حسب التاريخ (الأحدث أولاً)
+        recipes.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        // عرض الوصفات
+        renderCards('salads-cards', recipes);
+
+    } catch (error) {
+        console.error('خطأ في تحميل وصفات الطبخ الجزائري:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadSaladsRecipes);
+
+
 // بدء التحميل
 loadRecipes();
