@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مراكز الشرطة - النجدة DZ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap">
+
+    <!-- أيقونة الموقع -->
+    <link rel="icon" href="../icons/najda_icon_1.png" alt="icon" type="image/png" loading="lazy" class="welcome-logo">
+
+    <meta name="description"
+        content="منصة النجدة والطوارئ في الجزائر لتحديد أقرب خدمات الإسعاف، الحماية المدنية، الشرطة، مخابر التحاليل البيولوجية، الصيدليات، الأطباء وجرّ السيارات بسرعة ودقة عبر الموقع الجغرافي. وصول فوري لأرقام الطوارئ والخدمات القريبة منك في جميع الولايات.">
+    <!-- لون شريط المتصفح -->
+    <meta name="theme-color" content="#1d3557">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#1d3557">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f1f33">
+
+    <!-- أيقونة الموقع -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../icons/najda_icon_3.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../icons/najda_icon_3.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../icons/najda_icon_3.png">
+    <link rel="stylesheet" href="../style/polices.css">
+    <link rel="stylesheet" href="../style/SidebarAnimation.css">
+
+    <script type="application/ld+json">
+                {
+                  "@context": "https://schema.org",
+                  "@type": "ItemList",
+                  "name": " الشرطة الجزائرية",
+                  "itemListElement": [
+                    {
+                      "@type": "PoliceStation",
+                      "position": 1,
+                      "name": "مركز الشرطة",
+                      "telephone": "+213XXXXXXXXX",
+                      "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "البلدية",
+                        "addressRegion": "الولاية",
+                        "addressCountry": "DZ"
+                      },
+                      "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 36.75,
+                        "longitude": 3.05
+                      },
+                      "hasMap": "https://www.google.com/maps?q=36.75,3.05"
+                    }
+                  ]
+                }
+                </script>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="../icons/dgsn.png" alt="شعار الشرطة Dz" width="50" height="50" loading="lazy">
+                <h1>مراكز الشرطة</h1>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+            </div>
+
+
+
+            <div class="nav-overlay" id="navOverlay"></div>
+
+            <nav class="nav-links" id="navLinks">
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <a href="../index.html">الرئيسية</a>
+                <a href="gendarmerie.html">الدرك الوطني</a>
+                <a href="police.html" class="active">الشرطة</a>
+                <a href="protectioncivil.html">الحماية المدنية</a>
+                <a href="depannage.html">جر السيارات</a>
+                <a href="subscription.html">إشتراك</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>أقرب مراكز الشرطة إليك</h2>
+            <p>اعثر على أقرب مركز شرطة في حالات الطوارئ الأمنية</p>
+            <div class="location-access">
+                <button id="getLocation" class="btn"><i class="fas fa-map-marker-alt"></i> تحديث الموقع</button>
+            </div>
+            <div id="locationStatus" style="color: #ffdddd;"></div>
+        </div>
+    </section>
+
+
+    <!-- قسم البحث الاحترافي -->
+    <div class="search-container">
+        <div class="search-box">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="searchInput" placeholder="ابحث عن مراكز الشرطة ...">
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div id="policeList" class="police-grid">
+            <!-- سيتم ملؤها بالبيانات -->
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-grid">
+
+                <!-- تعريف -->
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <h2>النجدة Dz</h2>
+                        <p>منصة وطنية لتحديد أقرب خدمات النجدة والطوارئ في الجزائر بدقة وسرعة.</p>
+                        <img src="../icons/najda_icon_11.png" alt="شعار النجدة Dz" loading="lazy">
+                    </div>
+
+                </div>
+
+                <!-- خدمات الطوارئ -->
+                <div class="footer-col">
+                    <h4><i class="fas fa-ambulance"></i> خدمات النجدة والطوارئ</h4>
+                    <ul>
+                        <li><a href="hospitals.html"><i class="fas fa-hospital"></i> المستشفيات</a></li>
+                        <li><a href="police.html"><i class="fas fa-shield-alt"></i> مراكز الشرطة</a></li>
+                        <li><a href="gendarmerie.html"><i class="fas fa-star"></i> الدرك الوطني</a></li>
+                        <li><a href="protectioncivil.html"><i class="fas fa-fire-extinguisher"></i> الحماية
+                                المدنية</a></li>
+                        <li><a href="depannage.html"><i class="fas fa-truck-pickup"></i> جر ورأب السيارات</a></li>
+
+                    </ul>
+                </div>
+
+                <!-- خدمات صحية -->
+                <div class="footer-col">
+                    <h4><i class="fas fa-heartbeat"></i> خدمات صحية</h4>
+                    <ul>
+                        <ul>
+                            <li><a href="doctors.html"><i class="fas fa-user-md"></i>أطباء مختلف التخصصات</a></li>
+                            <li><a href="laboratories.html"><i class="fas fa-vials"></i> مخابر التحاليل البيولوجية</a>
+                            </li>
+                            <li><a href="pharmacies.html"><i class="fas fa-capsules"></i> الصيدليات</a></li>
+                        </ul>
+                    </ul>
+                </div>
+
+                <!-- روابط مهمة -->
+                <div class="footer-col">
+                    <h4><i class="fas fa-link"></i> روابط مهمة</h4>
+                    <ul>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> عن الموقع</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+                        <li><a href="privacy.html"><i class="fas fa-user-shield"></i> سياسة الخصوصية</a>
+                        </li>
+                        <li><a href="guide.html"><i class="fas fa-book"></i> الإرشادات</a></li>
+                        <li><a href="subscription.html"><i class="fas fa-id-card"></i>الإشتراك في خدمات النجدة</a></li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2026</p>
+            </div>
+
+        </div>
+
+        <!-- زر الرجوع للأعلى -->
+        <button id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+    </footer>
+
+    <!-- إضافة رابط ملف البيانات قبل الـ script -->
+    <script src="../script/police-data.js"></script>
+
+    <!--  القائمة الجانبية  script -->
+    <script src="../script/SidebarAnimation.js"></script>
+    <script>
+        // استبدال كل السكربت الموجود بهذا الكود المنظم
+
+        let userLat = null, userLon = null;
+
+        // استرجاع الموقع المخزن
+        const savedLat = localStorage.getItem('userLat');
+        const savedLon = localStorage.getItem('userLon');
+        const savedTime = localStorage.getItem('locationTimestamp');
+        const ONE_HOUR = 60 * 60 * 1000;
+
+        if (savedLat && savedLon && savedTime && (Date.now() - savedTime < ONE_HOUR)) {
+            userLat = parseFloat(savedLat);
+            userLon = parseFloat(savedLon);
+            document.getElementById('locationStatus').innerHTML = '<i class="fas fa-check-circle"></i> تم استخدام موقعك المخزن';
+        } else {
+            // لا يوجد موقع مخزن أو منتهي الصلاحية
+            document.getElementById('locationStatus').innerHTML = '<i class="fas fa-info-circle"></i> يُرجى تحديث الموقع لعرض المراكز الأقرب';
+        }
+
+        // دالة حساب المسافة (هافرسين)
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c;
+        }
+
+        // دالة عرض بطاقة الشرطة
+        function renderPoliceCard(p, distance) {
+            const distText = distance ? `<div class="distance-badge"><i class="fas fa-location-dot"></i> ${distance} كم</div>` : '';
+            const googleMapsLink = `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}`;
+            const cleanPhone = p.phone ? p.phone.replace(/[^\d+]/g, '') : '';
+
+            return `
+        <div class="police-card">
+            <div class="police-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="police-name">${p.name}</div>
+            <div class="police-detail"><i class="fas fa-map-marker-alt"></i> ولاية: ${p.wilaya} - بلدية: ${p.baladia}</div>
+            <div class="police-detail">
+                <i class="fas fa-phone"></i> 
+                <a href="tel:${cleanPhone}" class="phone-card-link" dir="ltr" style="text-decoration:none; color:inherit;">${p.phone}</a>
+            </div>
+            ${distText}
+            <a href="${googleMapsLink}" target="_blank" class="google-route-btn"><i class="fab fa-google"></i> التوجه عبر خرائط Google</a>
+        </div>
+    `;
+        }
+
+        // دالة عرض البيانات الرئيسية (مرتبة حسب المسافة إن وجدت)
+        function displayPolice() {
+            const container = document.getElementById('policeList');
+            if (!container) return;
+
+            if (!userLat || !userLon) {
+                // عرض بدون ترتيب
+                let html = '';
+                policeData.forEach(p => {
+                    html += renderPoliceCard(p, null);
+                });
+                container.innerHTML = html || '<p class="no-data">لا توجد بيانات</p>';
+                return;
+            }
+
+            // حساب المسافة والترتيب
+            const withDistance = policeData.map(p => {
+                const dist = calculateDistance(userLat, userLon, p.lat, p.lon);
+                return { ...p, distance: dist };
+            }).sort((a, b) => a.distance - b.distance);
+
+            let html = '';
+            withDistance.forEach(p => {
+                html += renderPoliceCard(p, p.distance.toFixed(1));
+            });
+            container.innerHTML = html;
+        }
+
+        // تحديث الموقع الجغرافي
+        document.getElementById('getLocation').addEventListener('click', function () {
+            const status = document.getElementById('locationStatus');
+            if (!navigator.geolocation) {
+                status.innerHTML = '<i class="fas fa-exclamation-triangle"></i> المتصفح لا يدعم تحديد الموقع';
+                return;
+            }
+            status.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري تحديد الموقع...';
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    userLat = position.coords.latitude;
+                    userLon = position.coords.longitude;
+
+                    // حفظ في localStorage مع وقت التخزين
+                    localStorage.setItem('userLat', userLat);
+                    localStorage.setItem('userLon', userLon);
+                    localStorage.setItem('locationTimestamp', Date.now());
+
+                    status.innerHTML = `<i class="fas fa-check-circle"></i> تم تحديد موقعك بنجاح`;
+                    displayPolice(); // إعادة العرض مع الترتيب
+                },
+                (error) => {
+                    status.innerHTML = `<i class="fas fa-exclamation-triangle"></i> فشل تحديد الموقع: ${error.message}`;
+                    displayPolice(); // عرض بدون ترتيب
+                }
+            );
+        });
+
+        // وظيفة البحث
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            const container = document.getElementById('policeList');
+
+            if (query === '') {
+                displayPolice(); // إعادة العرض العادي
+                return;
+            }
+
+            const filtered = policeData.filter(item => {
+                return item.name.toLowerCase().includes(query) ||
+                    (item.wilaya && item.wilaya.toLowerCase().includes(query)) ||
+                    (item.baladia && item.baladia.toLowerCase().includes(query)) ||
+                    (item.phone && item.phone.includes(query));
+            });
+
+            if (filtered.length === 0) {
+                const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}+الجزائر+مركز+شرطة`;
+                container.innerHTML = `
+            <div class="no-results">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>لم نتمكن من العثور على "${query}" في قاعدة بياناتنا.</p>
+                <p>قد تجد النتائج التي تبحث عنها عبر 
+                    <a href="${googleSearchUrl}" target="_blank" class="google-fallback-link">
+                        <i class="fab fa-google"></i> بحث Google
+                    </a>
+                </p>
+            </div>
+        `;
+            } else {
+                let html = '';
+                filtered.forEach(p => {
+                    html += renderPoliceCard(p, null);
+                });
+                container.innerHTML = html;
+            }
+        }
+
+        // مستمعات البحث
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', function () {
+            if (this.value.trim() === '') {
+                displayPolice(); // رجوع للعرض الكامل عند مسح البحث
+            }
+        });
+        searchInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // عرض أولي
+        displayPolice();
+
+    </script>
+
+</body>
+
+</html>
