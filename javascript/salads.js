@@ -66,7 +66,7 @@ function renderCards(filter) {
     } else {
         loadBtn.style.display = "block";
     }
-}
+
     const container = document.getElementById('diet-cards');
     container.innerHTML = '';
 
